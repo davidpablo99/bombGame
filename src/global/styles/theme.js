@@ -2,7 +2,7 @@ export default {
     colors: {
         white: "#FFFFFF",
         black: "#000000",
-        backgound: "#131313",
+        background: "#131313", // Corrigido aqui!
         textLight: "#BBB",
         explodeBackground: "#FF0044"
     },

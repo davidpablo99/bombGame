@@ -8,7 +8,7 @@ export default function Start(){
     const navigation = useNavigation();
 
     function hendleNavToPlayAlone(){
-        console.log("Teste de play alone");
+        navigation.navigate("PlayAlone")
     }
     function hendleNavToPlayTogether(){
         console.log("Teste de play Duo");
@@ -16,7 +16,9 @@ export default function Start(){
     function hendleNavToRules(){
         navigation.navigate("Rules");
     }
-    return <Container>
+
+    return (
+    <Container>
         <Logo source={require("../../assets/logoDark.png")} style={{resizeMode:"contain"}}/>
         <Title>Bem-vindo ao {"\n"} Bomb Game</Title>
         <SubTitle>Escolha um modo de jogo.</SubTitle>
@@ -30,4 +32,5 @@ export default function Start(){
         />
         <Rules onPress={hendleNavToRules}>Ver as regras do jogo</Rules>
     </Container>
+    )
 }

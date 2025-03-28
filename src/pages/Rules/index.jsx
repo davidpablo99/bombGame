@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Icons, NumberParagraph, Paragraph, ScrollTextRules, Title } from "./styles";
 import { Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { Icon } from "./styles";
 
 
 export default function Rules(){
@@ -11,7 +12,7 @@ export default function Rules(){
     }
     return (
     <Container>
-        <Icons name="arrow-back-ios" onPress={handleNavtoStart}/>
+        <Icon name="arrow-back-ios" onPress={handleNavtoStart}/>
         <ScrollTextRules>
             <Title>Jogando Solo</Title>
             <Paragraph>
