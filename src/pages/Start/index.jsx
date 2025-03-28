@@ -1,16 +1,20 @@
 import React from "react";
 import { Container, Logo, Rules, SubTitle, Title } from "./styles";
 import ButtonComponent from "../../components/Buttons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Start(){
-    const hendleNavToPlayAlone = () =>{
+
+    const navigation = useNavigation();
+
+    function hendleNavToPlayAlone(){
         console.log("Teste de play alone");
     }
-    const hendleNavToPlayTogether = () =>{
+    function hendleNavToPlayTogether(){
         console.log("Teste de play Duo");
     }
-    const hendleNavToRules = () =>{
-        console.log("Teste ver as regras");
+    function hendleNavToRules(){
+        navigation.navigate("Rules");
     }
     return <Container>
         <Logo source={require("../../assets/logoDark.png")} style={{resizeMode:"contain"}}/>
