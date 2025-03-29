@@ -11,7 +11,7 @@ export default function Start(){
         navigation.navigate("PlayAlone")
     }
     function hendleNavToPlayTogether(){
-        console.log("Teste de play Duo");
+        navigation.navigate("PlayTogether")
     }
     function hendleNavToRules(){
         navigation.navigate("Rules");
