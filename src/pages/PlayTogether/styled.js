@@ -18,7 +18,8 @@ export const Title = styled.Text`
 
 export const BombMessenge = styled.Text`
     font-size: ${RFValue(18)}px;
-    padding-bottom: ${RFValue(10)}px;
+    margin: ${RFValue(5)}px 0;
+    margin-bottom: ${RFValue(15)};
     text-align: center;
     color: #FF0044;
 

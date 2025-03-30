@@ -21,7 +21,9 @@
     "react-native-responsive-fontsize": "^0.5.1",
     "styled-components": "^6.1.16",
     "expo-splash-screen": "~0.29.22",
-    "expo-font": "~13.0.4"
+    "expo-font": "~13.0.4",
+    "react-native-web": "~0.19.13",
+    "@expo/metro-runtime": "~4.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
