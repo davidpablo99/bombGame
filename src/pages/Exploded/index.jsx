@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Logo, SucessImg, Title } from "./styled";
 
-import LogoImg from "../../assets/logoDark.png"
-import sucessImg from "../../assets/bomba_cortada_matrix.png"
+import LogoImg from "../../assets/logoLightRed.png";
+import sucessImg from "../../assets/bomba_explodiu.png";
 import { useNavigation } from "@react-navigation/native";
 import ButtonComponent from "../../components/Buttons";
 
-export default function Disarmed() {
+export default function Exploded() {
     const navigation = useNavigation();
 
     function handleStartGame(){
@@ -15,7 +15,7 @@ export default function Disarmed() {
     return (
       <Container>
         <Logo source={LogoImg} style={{ resizeMode: "contain" }} />
-        <Title>Parabéns!!!{"\n"}Você desarmou</Title>
+        <Title>Você Falhou{"\n"}Bomba Explodiu!!!</Title>
         <SucessImg source={sucessImg} style={{resizeMode:"contain"}}/>
         <ButtonComponent buttonText="Página inicial" hendlePress={handleStartGame}/>
       </Container>
