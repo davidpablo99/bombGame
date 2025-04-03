@@ -7,37 +7,65 @@ import PasswordInput from "../../components/PasswordInput";
 import ButtonComponent from "../../components/Buttons";
 import {useNavigation} from "@react-navigation/native"
 import BombService from "../../services/bombApp";
+import api from "../../services/api/api"
 
 export default function PlayAlone(){
     
     const navigation = useNavigation();
     const [started, setStarted] = useState(false);
-    const [pin, setPin] = useState(["","",""]);
+    const [pin, setPin] = useState(["", "", ""]);
     const [hours, setHours] = useState("00");
     const [minutes, setMinutes] = useState("03");
     const [seconds, setSeconds] = useState("00");
-
+    // console.log({pin});
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
-    const [intervalId, setIntervalID] = useState("")
+    const [intervalId, setIntervalId] = useState("")
 
     function handleStartGame(){
-        Alert.alert("Jogo iniciado!")
+        BombService.bombStartGame({setStarted, hours, minutes, seconds})
     }
 
-    function handleStartBomb(){
-        const diffTime = BombService.getDiffTime({hours,minutes,seconds});
-        BombService.startCountDown({
-            setSeconds,
-            setMinutes,
-            setHours,
-            setStarted,
-            diffTime,
-            setIntervalId,
-            intervalId,
-            navigation,
-        })
+    function handleDisarmBomb(){
+        BombService.disarmBomb({
+            setStarted, 
+            answer, 
+            navigation, 
+            pin, 
+            setPin, 
+            intervalId
+        });
     }
+    function handleGiveUp(){
+        BombService.givUpGame({intervalId, navigation})
+    }
+
+    function handleStartBomb() {
+        const diffTime = BombService.getDiffTime({ hours, seconds, minutes });
+    
+        BombService.startCountdown({
+          setSeconds,
+          setMinutes,
+          setHours,
+          setStarted,
+          diffTime,
+          setIntervalId,
+          intervalId,
+          navigation,
+        });
+      }
+
+      async function fetchQuestion() {
+        const randomNumber = Math.floor(Math.random() * 10 + 1);
+      
+        const { data } = await api.get(`questions/${randomNumber}`);
+      
+        setQuestion(data?.pergunta);
+        setAnswer(data?.resp);
+      }
+    useEffect(() => {
+        fetchQuestion();
+      }, []);
 
     function handleNavToStart(){
         navigation.navigate("Start")
@@ -63,17 +91,29 @@ export default function PlayAlone(){
                 >
             <Timer>
                 <TextTimer>
-                    {hours} : {minutes} : {seconds}
+                {hours} : {minutes} : {seconds}
                 </TextTimer>
             </Timer>
             </ImageBackground>
-            <TipContainer>
+            {!started ? null: (
+                <TipContainer>
                 <TipTitle>Sua dica:</TipTitle>
-                <TipText>Dica vai estar aqui</TipText>
+                <TipText>{question}</TipText>
+                <TipText>{answer}</TipText>
             </TipContainer>
-            <PasswordInput/>
-            <ButtonComponent buttonText="Iniciar" hendlePress={handleStartGame}/>
-            <ButtonComponent buttonText="Página Inicial" hendlePress={handleNavToStart}/>
+            )};
+            <PasswordInput pin={pin} setPin={setPin} started={started}/>
+            {!started ? (
+                <>
+                <ButtonComponent buttonText="Iniciar" hendlePress={handleStartGame}/>
+                <ButtonComponent buttonText="Página Inicial" hendlePress={handleNavToStart}/>
+                </>
+            ): (
+                <>
+                <ButtonComponent buttonText="Disarmar" hendlePress={handleDisarmBomb}/>
+                <ButtonComponent buttonText="Desistir" hendlePress={handleGiveUp}/>
+                </>
+            )}
         </Container>
     )
 }
