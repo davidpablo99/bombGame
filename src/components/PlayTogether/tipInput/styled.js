@@ -10,7 +10,13 @@ export const TipTitle = styled.Text`
     font-family: ${({ theme }) => theme.fonts.bold};
     color: ${({ theme }) => theme.colors.white};
     text-decoration: underline;
-`
+`;
+export const TipText = styled.Text`
+    font-size: ${RFValue(15)}px;
+    font-family: ${({ theme }) => theme.fonts.regular};
+    color: ${({ theme }) => theme.colors.textLight};
+    margin-top: ${RFValue(15)}px;
+`;
 
 export const InputContainer = styled.View`
     width: ${RFValue(210)}px;

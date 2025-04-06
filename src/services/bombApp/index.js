@@ -118,5 +118,23 @@ export default BombService = {
         setMessage("Você precisa colocar o tempo!");
         return;
       }
+    },
+
+    bombDisarmTogether: ({
+      pin, answer, setStarted, intervalId, setPin, setAnswer, navigation
+    })=>{
+      if (pin.join("")=== answer) {
+        clearInterval(intervalId);
+        setStarted(false);
+        navigation.navigate("Disarmed");
+        setPin(["", "", ""]);
+        setAnswer("");
+        return;
+      }
+      
+      setPin(["", "", ""]);
+
+      Vibration.vibrate(1000);
+      return;
     }
 };

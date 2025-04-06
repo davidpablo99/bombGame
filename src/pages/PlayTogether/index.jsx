@@ -55,11 +55,11 @@ export default function PlayTogether(){
         }
     
     function handleDisarmBomb(){
-
+        BombService.bombDisarmTogether({pin, answer, setStarted, intervalId, setPin, setAnswer, navigation})
     }
 
     function handleGiveUpGame(){
-
+        BombService.givUpGame({intervalId, navigation})
     }
     
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Input, InputContainer, TipTitle } from "./styled";
+import { Container, Input, InputContainer, TipText, TipTitle } from "./styled";
 
 export default function TipInput({started, question, setQuestion}){
     return (<Container>
@@ -14,7 +14,7 @@ export default function TipInput({started, question, setQuestion}){
                     />
                 </InputContainer>
             ) : (
-                <TipTitle>{question}</TipTitle>
+                <TipText>{question}</TipText>
             )
         }
     </Container>)
