@@ -14,7 +14,7 @@ export const TipTitle = styled.Text`
 
 export const InputContainer = styled.View`
     width: ${RFValue(210)}px;
-    height: ${RFValue(30)}px;
+    height: ${RFValue(40)}px;
     border: ${RFValue(1)}px solid white;
     padding-top:9px;
     margin-top: 5px;
