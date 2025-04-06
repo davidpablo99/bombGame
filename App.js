@@ -9,7 +9,7 @@ import {
 } from "@expo-google-fonts/roboto";
 import theme from './src/global/styles/theme';
 import * as SplashScreen from "expo-splash-screen";
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components/native';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
