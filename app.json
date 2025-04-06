@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "bombGame",
+    "name": "Bomb Game",
     "slug": "bombGame",
     "version": "1.0.0",
     "experimental": {
@@ -10,6 +10,7 @@
       "backgroundColor": "#000000"
     },
     "icon": "./src//assets/icon.png",
+    "orientation": "portrait",
     "plugins": [
       "expo-font"
     ]
