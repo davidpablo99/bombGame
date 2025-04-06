@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Input, InputContainer, TipTitle } from "./styled";
 
-export default function TipInput(){
+export default function TipInput({started, question, setQuestion}){
     return (<Container>
         <TipTitle>Dica de senha:</TipTitle>
         <InputContainer>

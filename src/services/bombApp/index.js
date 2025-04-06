@@ -81,5 +81,42 @@ export default BombService = {
     givUpGame:({intervalId, navigation})=>{
         clearInterval(intervalId);
         navigation.navigate("Exploded")
+    },
+
+    bombActivationTogether: ({
+      question,
+      pin,
+      hours,
+      minutes,
+      seconds,
+      setMessage,
+      setStarted,
+      setPin,
+      handleStartBomb,
+      setAnswer,
+    })=>{
+      if (question.length < 1) {
+        setMessage("Você precisa dar uma dica!");
+        return;
+      }
+
+      if (pin.join("").length < 3) {
+        setMessage("Senha invalida, complete ela");
+        return;
+      }
+
+      let timeIsSet = false;
+      if(hours.length > 0 || minutes.length > 0 || seconds.length > 0){
+        setStarted(true);
+        timeIsSet = true;
+        setMessage("");
+        handleStartBomb();
+        setAnswer(pin.join(""));
+        setPin(["", "", ""]);
+      }
+      if (!timeIsSet) {
+        setMessage("Você precisa colocar o tempo!");
+        return;
+      }
     }
 };

@@ -21,8 +21,12 @@ export default function PlayTogether(){
     const [answer, setAnswer] = useState("");
     const [intervalId, setIntervalId] = useState("")
 
-    function handleStartGame(){
-            const diffTime = BombService.getDiffTime({hours, minutes, seconds})
+    function handleNavToStart(){
+        navigation.navigate("Start")
+    }
+
+    function handleStartBomb() {
+        const diffTime = BombService.getDiffTime({hours, minutes, seconds})
             BombService.startCountdown({
                 setSeconds,
                 setMinutes,
@@ -32,19 +36,56 @@ export default function PlayTogether(){
                 setIntervalId,
                 intervalId,
                 navigation,
+            });
+    }
+
+    function handleStartGame(){
+            BombService.bombActivationTogether({
+                question,
+                pin,
+                hours,
+                minutes,
+                seconds,
+                setMessage,
+                setStarted,
+                setPin,
+                handleStartBomb,
+                setAnswer,
             })
         }
-    function handleNavToStart(){
-        navigation.navigate("Start")
+    
+    function handleDisarmBomb(){
+        
     }
+
+    function handleGiveUpGame(){
+
+    }
+    
+
     
     return <Container>
         <Title>Bomb Game Dupla</Title>
         <InputTimer/>
             {message ? <BombMessenge>{message ? message : null}</BombMessenge> : null}
-        <TipInput/>
-        <InputPassord/>
-        <ButtonComponent buttonText="Iniciar" hendlePress={handleStartGame}/>
-        <ButtonComponent buttonText="Página Inicial" hendlePress={handleNavToStart}/>
+        <TipInput 
+            started={started}
+            question={question}
+            setQuestion={setQuestion}
+        />
+        <InputPassord pin={pin} setPin={setPin}/>
+        {
+            !started ? (
+                <>
+                <ButtonComponent buttonText="Iniciar" hendlePress={handleStartGame}/>
+                <ButtonComponent buttonText="Página Inicial" hendlePress={handleNavToStart}/>
+                </>
+            ) : (
+                <>
+                <ButtonComponent buttonText="Desarmar" hendlePress={handleDisarmBomb}/>
+                <ButtonComponent buttonText="Desistir" hendlePress={handleGiveUpGame}/>
+                </>
+            )
+        }
     </Container>
 }
