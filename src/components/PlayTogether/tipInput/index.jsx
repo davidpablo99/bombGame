@@ -4,8 +4,18 @@ import { Container, Input, InputContainer, TipTitle } from "./styled";
 export default function TipInput({started, question, setQuestion}){
     return (<Container>
         <TipTitle>Dica de senha:</TipTitle>
-        <InputContainer>
-            <Input placeholder="Dica para sua dupla"/>
-        </InputContainer>
+        {
+            !started ? (
+                <InputContainer>
+                    <Input placeholder="Dica para sua dupla" 
+                        value={question}
+                        onChangeText={(value)=>{
+                            setQuestion(value)}}                
+                    />
+                </InputContainer>
+            ) : (
+                <TipTitle>{question}</TipTitle>
+            )
+        }
     </Container>)
 }

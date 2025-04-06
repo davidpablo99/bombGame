@@ -11,7 +11,8 @@ export default function InputPassord({ pin, setPin }){
     return (
     <Container>
         <InputContainer>
-            <Input keyboardType="number-pad" maxLength={1} ref={input1} value={pin[0]} onChangeText={(value)=>{value && input2.current.focus();
+            <Input keyboardType="number-pad" maxLength={1} ref={input1} value={pin[0]} 
+                onChangeText={(value)=>{value && input2.current.focus();
                 setPin([value, pin[1], pin[2]]);
             }}/>
         </InputContainer>
@@ -21,10 +22,12 @@ export default function InputPassord({ pin, setPin }){
             }}/>
         </InputContainer>
         <InputContainer>
-            <Input keyboardType="number-pad" maxLength={1} ref={input3} value={pin[2]} onChangeText={
+            <Input keyboardType="number-pad" maxLength={1} ref={input3} value={pin[2]} 
+            onChangeText={
                 (value)=>{
                     setPin([pin[0], pin[1], value]);
-                    value && Keyboard.dismiss();}}/>
+                    value && Keyboard.dismiss();}}
+            />
         </InputContainer>
     </Container>)
 }
