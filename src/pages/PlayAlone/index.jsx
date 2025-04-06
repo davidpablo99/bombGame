@@ -17,6 +17,7 @@ export default function PlayAlone(){
     const [hours, setHours] = useState("00");
     const [minutes, setMinutes] = useState("03");
     const [seconds, setSeconds] = useState("00");
+    const [message, setMessage] = useState("");
     // console.log({pin});
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
