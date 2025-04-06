@@ -55,7 +55,7 @@ export default function PlayTogether(){
         }
     
     function handleDisarmBomb(){
-        
+
     }
 
     function handleGiveUpGame(){
@@ -66,7 +66,14 @@ export default function PlayTogether(){
     
     return <Container>
         <Title>Bomb Game Dupla</Title>
-        <InputTimer/>
+        <InputTimer 
+            hours={hours}
+            minutes={minutes}
+            seconds={seconds}
+            setHours={setHours}
+            setMinutes={setMinutes}
+            setSeconds={setSeconds}
+        />
             {message ? <BombMessenge>{message ? message : null}</BombMessenge> : null}
         <TipInput 
             started={started}
